@@ -1,0 +1,104 @@
+<div class="container bg-success" style="height: 600px;">
+    <div class="row justify-content-center">
+        <div class="col-8  bg-dark mt-3" style="border: 2px solid black;border-radius: 10px;">
+            <h1 class="text-center text-white mt-3">Add New Product</h1>
+            <form (ngSupmit)="addProduct()" [formGroup]="userform" #signup="ngForm">
+             <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Product Name" value="" required
+                    formControlName="productName" name="productName">
+                    
+                </div>
+                 <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Product Details" value="" required
+                    formControlName="productDetails" name="productDetails">
+                    
+                </div>
+                 <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Product ImgURL" value="" required
+                    formControlName="productImgURL" name="productImgURL">
+                    
+                </div>
+
+             </div>
+           
+
+                  <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="string" class="form-control" id="validationCustom02" placeholder="Product ID" value="" required
+                    formControlName="id" name="id">
+                    
+                </div>
+                 <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="number" class="form-control" id="validationCustom02" placeholder="Product Quatity" value="" required
+                    formControlName="productQuantity" name="productQuantity">
+                    
+                </div>
+                 <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    <input type="number" class="form-control" id="validationCustom02" placeholder="Product Price" value="" required
+                    formControlName="productPrice" name="productPrice">
+                    
+                </div>
+
+             </div>
+
+                <div class="row mt-2">
+                <div class="col-5">
+                    <h5 class="text-white">Select Category ID</h5>
+                </div>
+            <div class="col-7">
+               <select class="form-select" aria-label="Default select example" id="validationCustom02"  value="" required
+                    formControlName="categoryId" name="categoryId">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+             </div> 
+
+
+
+                <div class="row justify-content-center m-4">
+                    <div class="col-md-2 mb-1">
+                        <button type="submit" class="btn btn-primary" (click)="addProduct()" [disabled]="signup.invalid" >Add</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="justify-content-center col-1">
+                <button class="btn btn-dark " [routerLink]="['/home']" routerLinkActive="active">Back</button>
+            </div>
+            <div class="justify-content-center col-2">
+                <button class="btn btn-primary " >Update Product</button>
+            </div>
+            <div class="justify-content-center col-2">
+                <button class="btn btn-danger " >Delete Product</button>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="justify-content-center col-2">
+                <select class="form-select" aria-label="Default select example" id="validationCustom02"  value="" >
+                    <option></option>
+                </select>
+               
+            </div>
+            <div class="col-md-2">
+                 <h3 class="text text-white">Search</h3>
+            </div>
+
+        </div>
+    </div>
+
+

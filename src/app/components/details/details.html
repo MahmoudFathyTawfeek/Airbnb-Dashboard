@@ -1,0 +1,45 @@
+<div class="container bg-dark m-3">
+    <div class="row ">
+        <div class="col-md-4 mt-1 mb-1" >
+            <img class="img-fluid" style="border: 1px solid black;border-radius: 10px;" src={{product?.productImgURL}} />
+        </div>
+        <div class="col-md-8 text-white">
+            <h1>{{product?.productName}}</h1>
+            <p>{{product?.productDetails}}</p>
+            <p>Id : {{product?.id}}</p>
+            <p>Price :{{product?.productPrice}}</p>
+            <p>Quantity :{{product?.productQuantity}}</p>
+             
+        </div>
+    </div>
+</div>
+<div class="row mb-1">
+<div class="justify-content-center col-1">
+ <button class="btn btn-dark " [routerLink]="['/parent']" routerLinkActive="active">Back</button>
+</div>
+
+<div class="d-flex justify-content-center col-11">
+    <button class="btn btn-dark" (click)="one()">
+        1  
+        <i class="fa-solid fa-anglas-left text-dark"></i>
+    </button>
+    <button class="btn btn-dark" (click)="two()" >
+        2  
+        <i class="fa-solid fa-anglas-left text-dark"></i>
+    </button>
+    <button class="btn btn-dark" (click)="three()" >
+        3  
+        <i class="fa-solid fa-anglas-left text-dark"></i>
+    </button>
+    <button class="btn btn-dark" (click)="prev()" [disabled]="currentId==allIds[0]">
+        >>  
+        <i class="fa-solid fa-anglas-left text-dark"></i>
+    </button>
+    <button class="btn btn-dark" (click)="next()" [disabled]="currentId==allIds.length">
+          <<
+        <i class="fa-solid fa-anglas-right text-dark"></i>
+    </button>
+    
+</div>
+
+</div>
