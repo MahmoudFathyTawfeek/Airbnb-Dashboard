@@ -1,39 +1,101 @@
-<div class="bg-dark">
-<div class="container " style="background-color: rgb(8, 3, 17);">
-    <div class="row">
-        <div class="row">
-           <div class="col-2">
-             <button class="btn btn-dark" (click)="login()" [disabled]="isuserlogpro">Login</button>
-            <button class="btn btn-dark" (click)="logout()" [disabled]="!isuserlogpro">logout</button>
-           </div>
+<div class="d-flex" style="min-height: 100vh;">
+
+  <!-- ✅ Sidebar ثابت -->
+  <app-sidebar class="sidebar"></app-sidebar>
+
+  <!-- ✅ Main Content خارج container -->
+  <div class="main-content flex-grow-1">
+    <div class="container-fluid py-4">
+
+      <h3 class="text-center text-primary mb-5">📊 إحصائيات النظام</h3>
+
+      <!-- ✅ دواير الإحصائيات -->
+      <div class="row mb-5 text-center">
+        <div class="col-md-3">
+          <div class="card rounded-circle p-3 shadow-sm bg-primary text-white">
+            <div class="fs-3 fw-bold">{{ usersCount }}</div>
+            <div>عدد المستخدمين</div>
+          </div>
         </div>
-        <div class="row mt-2 justify-content-center align-items-center" >
-              <img src="https://f.nooncdn.com/p/v1640152217/N52217824A_1.jpg?format=avif&wproductIdth=240" 
-            style="width: 300px;height: 300px;display: flex;margin-bottom: 5px;"/>
-             <img src="https://f.nooncdn.com/p/pnsku/N70035206V/45/_/1712239207/3e7c97e2-cf7d-48ee-b324-a5d4aa30efe8.jpg?format=avif&wproductIdth=240"
-             style="width: 300px;height: 300px;display: flex;margin-bottom: 5px;"/>
-              <img src="https://f.nooncdn.com/p/pnsku/N70030440V/45/_/1702699238/6ae73ece-d29e-4a81-ba41-850055d0937f.jpg?format=avif&wproductIdth=240"
-              style="width: 300px;height: 300px;display: flex;margin-bottom: 5px;"/>
-            <img src="https://f.nooncdn.com/p/v1686205682/N50838986A_1.jpg?format=avif&wproductIdth=240" 
-            style="width: 300px;height: 300px;display: flex"/>
-            
-             <img src="https://f.nooncdn.com/p/pnsku/N70063654V/45/_/1713704986/b06f55f9-03d1-4021-8b06-da23bc27e60d.jpg?format=avif&wproductIdth=240"
-             style="width: 300px;height: 300px;display: flex"/>
-              <img src="https://f.nooncdn.com/p/pnsku/N70085224V/45/_/1721894952/91270228-e30b-484e-ae2a-3e746b194bb2.jpg?format=avif&wproductIdth=240"
-              style="width: 300px;height: 300px;display: flex"/>
-            
+        <div class="col-md-3">
+          <div class="card rounded-circle p-3 shadow-sm bg-success text-white">
+            <div class="fs-3 fw-bold">{{ unitsCount }}</div>
+            <div>عدد الوحدات</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card rounded-circle p-3 shadow-sm bg-warning text-dark">
+            <div class="fs-3 fw-bold">{{ bookingsCount }}</div>
+            <div>عدد الحجوزات</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card rounded-circle p-3 shadow-sm bg-info text-white">
+            <div class="fs-3 fw-bold">{{ occupancyRate }}%</div>
+            <div>نسبة الإشغال</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ الرسوم البيانية -->
+      <div class="row g-4">
+        <!-- Bar Chart -->
+        <div class="col-md-6">
+          <div class="card chart-card">
+            <div class="card-header bg-primary text-white fw-bold">عدد المستخدمين، الوحدات، الحجوزات</div>
+            <div class="card-body">
+              <canvas baseChart
+                      [data]="barChartData"
+                      [options]="barChartOptions"
+                      chartType="bar">
+              </canvas>
+            </div>
+          </div>
         </div>
 
-            <h1 class="text-white"> {{storePropairty.storeName}} </h1>
+        <!-- Pie Chart -->
+        <div class="col-md-6">
+          <div class="card chart-card">
+            <div class="card-header bg-success text-white fw-bold">توزيع النسب</div>
+            <div class="card-body">
+              <canvas baseChart
+                      [data]="pieChartData"
+                      [options]="pieChartOptions"
+                      chartType="pie">
+              </canvas>
+            </div>
+          </div>
+        </div>
 
-            <!-- <li *ngFor="let items of storePropairty.storeBranch">
-                {{items}}
+        <!-- Line Chart -->
+        <div class="col-md-6">
+          <div class="card chart-card">
+            <div class="card-header bg-info text-white fw-bold">نمو المستخدمين على مدار الشهور</div>
+            <div class="card-body">
+              <canvas baseChart
+                      [data]="lineChartData"
+                      [options]="lineChartOptions"
+                      chartType="line">
+              </canvas>
+            </div>
+          </div>
+        </div>
 
-            </li> -->
+        <!-- Doughnut Chart -->
+        <div class="col-md-6">
+          <div class="card chart-card">
+            <div class="card-header bg-warning text-dark fw-bold">نسبة كل نوع وحدة</div>
+            <div class="card-body">
+              <canvas baseChart
+                      [data]="doughnutChartData"
+                      [options]="doughnutChartOptions"
+                      chartType="doughnut">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            @for(items of storePropairty.storeBranch; track items){
-                <li class="text-white">{{items}}</li>
-            }
     </div>
-</div>
+  </div>
 </div>

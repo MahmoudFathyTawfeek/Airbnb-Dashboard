@@ -11,6 +11,10 @@ import { Authintication } from '../../service/authintication';
 })
 export class Navbar {
 
+   logout() {
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = '/';
+  }
 
   userLogedInNav:boolean = false
 

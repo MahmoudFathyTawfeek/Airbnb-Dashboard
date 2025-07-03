@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+
 import { Iuser } from '../../models/iuser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { userService } from '../../service/user-service';
 
 @Component({
   selector: 'app-signup',
-  imports: [RouterLink, FormsModule, CommonModule,],
+  imports: [ FormsModule, CommonModule,],
   templateUrl: './signup.html',
   styleUrl: './signup.css'
 })

@@ -1,52 +1,48 @@
 import { Component, inject } from '@angular/core';
-import { AddProductService } from '../../service/add-product-service';
-import { Iproducts } from '../../models/iproducts';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { AddUnitService } from '../../service/add-product-service';
+import { Iunit } from '../../models/iunit';
 
 @Component({
-  selector: 'app-add-product',
-  imports: [RouterModule, FormsModule, CommonModule,ReactiveFormsModule],
+  selector: 'app-add-unit',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './add-product.html',
-  styleUrl: './add-product.css'
+  styleUrls: ['./add-product.css']
 })
-export class AddProduct {
+export class AddUnitComponent {
 
-  proServive = inject(AddProductService)
-   userform:FormGroup
+  unitService = inject(AddUnitService);
+  unitForm: FormGroup;
+  unitData: Iunit = {} as Iunit;
 
-   Prodpart:Iproducts = {} as Iproducts
-
- constructor(){
-    this.userform = new FormGroup({
-        id: new FormControl('',[Validators.required]),
-      productName: new FormControl('',[Validators.required, Validators.minLength(3)]),
-      productDetails: new FormControl('',[Validators.required,Validators.minLength(3)]),
-      productImgURL: new FormControl('',[Validators.required]),
-      productQuantity: new FormControl('',[Validators.required]),
-      productPrice: new FormControl('',[Validators.required]),
-    
-      categoryId: new FormControl('',[Validators.required]),
-    })
+  constructor() {
+    this.unitForm = new FormGroup({
+      title: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      description: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      location: new FormControl('', Validators.required),
+      price: new FormControl('', [Validators.required, Validators.min(1)]),
+      imageUrl: new FormControl('', Validators.required),
+      isAvailable: new FormControl(true)
+    });
   }
 
-     addProduct(){
-    // let u:Iproducts = {
-    //   id:10,
-    //   productName:"mahmoud",
-    //   productImgURL:"mahmoud@gmail.com",
-    //   productQuantity:20,
-    //   productPrice:300,
-    //   categoryId:1,
-    //   productDetails:"loram loram"
+addUnit() {
+  if (this.unitForm.valid) {
+    // نحذف الـ id من الفورم لو موجود
+    const { id, ...unitWithoutId } = this.unitForm.value;
 
-    // }
-  
-    this.proServive.addProduct(this.userform.value).subscribe((data)=>{
-      console.log(data)
-    })
-  alert("You add product seccessfully")
+    this.unitService.addUnit(unitWithoutId).subscribe(data => {
+      console.log(data);
+      alert("✅ تمت إضافة الوحدة بنجاح");
+    });
+  } else {
+    alert("⚠️ الرجاء ملء جميع الحقول بشكل صحيح");
   }
+}
+
 }
 

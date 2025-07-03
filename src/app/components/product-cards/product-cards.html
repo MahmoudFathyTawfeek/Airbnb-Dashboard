@@ -1,60 +1,32 @@
-<div class="container bg-primary" style="border: 3px solid black;border-radius: 15px;">
-  <button class="btn btn-dark my-4" (click)="toggleFanc()">{{toggle?"Hide ":"Show "}}Images</button>
-<!-- <h4 class="d-flex">{{date | date:'fullDate'}}</h4> -->
-<!-- <h4>{{this.clientName |formatPipe}}</h4> -->
-  <h1>Totle order price :  {{totleOrderPrice}}</h1>
-<!-- 
-  <label class="form-label">Filter By Name</label>
-    <input type="text" class="form-control" [(ngModel)]="filterByName" > -->
-
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>All Units</h3>
+    <a routerLink="/Add-unit" class="btn btn-primary">+ Add Units</a>
+  </div>
 
   <div class="row">
-    @for(items of productsAfterSearch ; track items.categoryId){
-    <div class="col-4 d-flex justify-content-center align-items-center" >
+    <div class="col-md-4 mb-4" *ngFor="let unit of units">
+      <div class="card h-100 shadow text-center">
+        <img [src]="unit.imageUrl || 'https://via.placeholder.com/300x200'" class="card-img-top" alt="unit image">
 
-      <div class="card border-dark bg-secondary" style="width: 18rem;border-radius: 20px;">
-        @if(toggle){
-        <img [src]="items.productImgURL" class="card-img-top" alt="..." appImgStyle style="border-radius: 20px;">
-        }@else {<p>No image avalible</p>}
         <div class="card-body">
-          <h5 class="card-title" [ngClass]="{'changeBG': items.productQuantity==0,'changeBG2':items.productQuantity>0}">{{items.productName}}</h5>
-          <p class="card-text">Price: {{items.productPrice | currency:'$':'code'}}</p>
-          <p class="Quantity" [ngStyle]="{'background-color': items.productQuantity==1?'red':'blue'}">Quantity: {{items.productQuantity}}</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" [disabled]="items.productQuantity==0" (click)="addToCardInChild(items)"><i class="fa-solid fa-cart-shopping"></i>Add to card</button>
-             <button class="btn btn-dark" [routerLink]="['/parent',items.id]" >Details</button>
+          <h5 class="card-title">{{ unit.title }}</h5>
+          <p class="card-text">
+            <strong>Unit ID:</strong> {{ unit.id }}<br>
+            <strong> Descryption: </strong> {{ unit.description }}<br>
+            <strong>Location:</strong> {{ unit.location }}<br>
+            <strong>Price:</strong> {{ unit.price }} LE<br>
+            <strong>Available</strong>
+            <span class="badge" [ngClass]="unit.isAvailable ? 'bg-success' : 'bg-danger'">
+              {{ unit.isAvailable ? 'yes' : 'no' }}
+            </span>
+          </p> 
+          <a [routerLink]="['/units/', unit.id]" class="btn btn-info btn-sm">📄 Details</a>
 
-       
-              @if(sclientName){
-               <p>
-               Thanks {{this.userName}} {{items.id}}
-            </p>
-            }
-           
-          </div>
-          <div class="d-flex justify-content-between">
-            <input type="number" #qunValue min="1" [max]="items.productQuantity"  style="background-color: cadetblue;border: 1px solid black;border-radius: 2px;">
-            @switch (items.productQuantity) {
-            @case (0) { <p class="text-white">No products</p> }
-            @case (1) { <p class="text-white">Last item in stock</p>}
-            @default { <p class="text-white">In stock</p>}
-            }
-            <button class="btn btn-primary" (click)="buy(qunValue.value,items)">Buy</button>
-          
-          </div>
-        </div>
+        </div> 
       </div>
-
     </div>
-}
   </div>
-</div>
-<!-- <div *If="!isPurchased">
-  <button (click)="togglePurchase()">Buy from Store</button>
-</div>
 
-<div *If="isPurchased">
-  <p>Thanks for purchasing from our Store, {{ ClientName }}!</p>
+ 
 </div>
-
-<input type="text" placeholder="Enter your name" [(ngModel)]="ClientName" /> -->

@@ -1,5 +1,8 @@
 export interface Iuser {
-    fname:string,
-    email:string,
-    password:string
+    id: number;
+  name: string;
+  email: string;
+  phone?: string;
+  isAdmin?: boolean;
 }
+

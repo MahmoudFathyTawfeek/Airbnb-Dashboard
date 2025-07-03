@@ -1,72 +1,44 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Iproducts } from '../../models/iproducts';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ProductAPI } from '../../service/product-api';
-import { Static } from '../../service/static';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
-  selector: 'app-details',
-  imports: [RouterLink],
+  selector: 'app-unit-details',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './details.html',
-  styleUrl: './details.css'
+  styleUrls: ['./details.css']
 })
-export class Details implements OnInit {
-  currentId:number=0
-  product:Iproducts|undefined
-   allIds!:number[]
-   myIndex!:number
+export class UnitDetailsComponent implements OnInit {
+  unitId!: number;
+  unit: any;
 
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
-   constructor(
-    private route:Router, 
-    private active:ActivatedRoute, 
-    private productStatic:Static,
-    private prodByAPI:ProductAPI,
-    private cdr:ChangeDetectorRef,
-   ){
-   
-   }
+ ngOnInit(): void {
+  const idParam = this.route.snapshot.paramMap.get('id');
+  this.unitId = idParam ? +idParam : 0;
+  console.log('🔎 ID من الراوت:', this.unitId); // ✅ تأكيد الـ ID
 
-   ngOnInit(): void {
-    //  this.currentId=Number (this.active.snapshot.paramMap.get('idFromDB'))
-     this.active.paramMap.subscribe((data)=>{
-        this.currentId = Number (data.get('idFromDB'))
-      
-        this.prodByAPI.getProductById(this.currentId).subscribe((data)=>{
-          if(data){
-            this.product=data
-            this.cdr.detectChanges()
-          } else {
-          this.route.navigate(['**']);
-            }
-        })
-     })
-    //  this.allIds=this.productStatic.getAllIds()
-    this.prodByAPI.getAllIds().subscribe((data)=>{
-      this.allIds=data.map((id)=>Number(id))
-    })
-   }
-
-     prev(){
-this.myIndex=this.allIds.indexOf(this.currentId)
-this.route.navigate(['parent/',this.allIds[--this.myIndex]])
+  this.http.get(`${environment.baseUrl}/units/${this.unitId}`).subscribe(
+    data => {
+      this.unit = data;
+      console.log('📦 بيانات الوحدة:', this.unit); // ✅ تأكيد البيانات
+    },
+    error => {
+      console.error('❌ خطأ في تحميل الوحدة:', error);
+    }
+  );
 }
 
-next(){
-this.myIndex=this.allIds.indexOf(this.currentId)
-this.route.navigate(['parent/',this.allIds[++this.myIndex]])
-}
 
-one(){
-this.myIndex=this.allIds.indexOf(1)
-this.route.navigate(['parent/',this.allIds[this.myIndex]])
-}
-two(){
-this.myIndex=this.allIds.indexOf(2)
-this.route.navigate(['parent/',this.allIds[this.myIndex]])
-}   
-three(){
-this.myIndex=this.allIds.indexOf(3)
-this.route.navigate(['parent/',this.allIds[this.myIndex]])
-}
+  goBack() {
+    this.router.navigate(['/units']);
+  }
 }

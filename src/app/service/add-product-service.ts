@@ -1,23 +1,24 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Iproducts } from '../models/iproducts';
+import { Iunit } from '../models/iunit';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddProductService {
-httpHeaders={}
-  constructor(
-     private http:HttpClient
-  ) {
-     this.httpHeaders={headers:new HttpHeaders({
-     'Content-Type':'applicatin/json'
-    })}
-   }
+export class AddUnitService {
+  private httpHeaders;
 
-    addProduct(newUser:Iproducts):Observable<Iproducts>{
-       return this.http.post<Iproducts>(`${environment.baseUrl}/products`,newUser,this.httpHeaders)
-      }
+  constructor(private http: HttpClient) {
+    this.httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'  
+      })
+    };
+  }
+
+  addUnit(newUnit: Iunit): Observable<Iunit> {
+    return this.http.post<Iunit>(`${environment.baseUrl}/units`, newUnit, this.httpHeaders);
+  }
 }

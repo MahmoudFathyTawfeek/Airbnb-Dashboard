@@ -1,13 +1,16 @@
 import { Routes } from '@angular/router';
 import { Main } from './components/main/main';
 import { Home } from './components/home/home';
-import { Productparent } from './components/productparent/productparent';
-import { Details } from './components/details/details';
-import { AddProduct } from './components/add-product/add-product';
 import { loginUserGuard } from './Gards/login-user-guard';
 import { Signup } from './components/signup/signup';
 import { Notfound } from './components/notfound/notfound';
 import { Login } from './components/login/login';
+import { AddUnitComponent } from './components/add-product/add-product';
+import { UnitsComponent } from './components/product-cards/product-cards';
+import { UsersComponent } from './components/users/users';
+import { AddUserComponent } from './components/adduser/adduser';
+import { EditUserComponent } from './components/updateuser/updateuser';
+import { UnitDetailsComponent } from './components/details/details';
 
 
 
@@ -22,9 +25,14 @@ export const routes: Routes = [{
 
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: Home, title: 'Home_page' },
-      { path: 'parent', component: Productparent, title: 'product_parent',canActivate:[loginUserGuard]},
-      { path: 'parent/:idFromDB', component: Details, title: 'Product_Details'},
-      { path: 'Add-Product', component: AddProduct, title: 'add-product',canActivate:[loginUserGuard]},
+      { path: 'users', component: UsersComponent, title: 'users',canActivate:[loginUserGuard]},
+      { path: 'users/add', component: AddUserComponent, title: 'add-users',canActivate:[loginUserGuard]},
+      { path: 'users/update/:id', component: EditUserComponent, title: 'edit-users',canActivate:[loginUserGuard]},
+      { path: 'Add-unit', component: AddUnitComponent, title: 'add-unit',canActivate:[loginUserGuard]},
+      { path: 'units', component: UnitsComponent,title:'units', },
+      {path: 'units/:id',component: UnitDetailsComponent,title:'unit details'}
+
+      
     ]
   },
   { path: 'login', component: Login, title: 'login',canActivate:[loginUserGuard] },

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Iproducts } from '../../models/iproducts';
 import { RouterModule } from '@angular/router';
-import { ProductCards } from '../product-cards/product-cards';
+
 
 
 @Component({
   selector: 'app-productparent',
-  imports: [FormsModule, RouterModule, ProductCards],
+  imports: [FormsModule, RouterModule],
   templateUrl: './productparent.html',
   styleUrl: './productparent.css'
 })
