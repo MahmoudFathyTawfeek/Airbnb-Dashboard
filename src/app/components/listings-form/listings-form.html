@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h3 class="mb-3">Add New Listing</h3>
+
+  <form [formGroup]="listingForm" (ngSubmit)="addListing()">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-control" formControlName="title">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Unit ID</label>
+      <input type="number" class="form-control" formControlName="unitId">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price Per Night</label>
+      <input type="number" class="form-control" formControlName="pricePerNight">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Status</label>
+      <select class="form-control" formControlName="status">
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Image URL</label>
+      <input type="text" class="form-control" formControlName="image">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Listing</button>
+  </form>
+</div>

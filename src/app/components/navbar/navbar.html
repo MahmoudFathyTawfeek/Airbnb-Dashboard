@@ -1,24 +1,64 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-     <a class="navbar-brand d-flex align-items-center" routerLink="/">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" width="40" height="40" class="me-2 rounded-circle shadow-sm">
-</a>
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        alt="Logo"
+        width="40"
+        height="40"
+        class="me-2 rounded-circle shadow-sm"
+      />
+    </a>
 
-    <p class="navbar-brand" >Dashboard</p>
+    <p class="navbar-brand">Dashboard</p>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNav"
+    >
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+          <a
+            class="nav-link"
+            routerLink="/users"
+            routerLinkActive="active"
+            >Users</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/units" routerLinkActive="active">Units</a>
+          <a
+            class="nav-link"
+            routerLink="/units"
+            routerLinkActive="active"
+            >Units</a
+          >
         </li>
+
+        <!-- 🚀 New link for Listings -->
         <li class="nav-item">
-          <a class="nav-link" routerLink="/bookings" routerLinkActive="active">Bookings</a>
+          <a
+            class="nav-link"
+            routerLink="/listings"
+            routerLinkActive="active"
+            >Listings</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/bookings"
+            routerLinkActive="active"
+            >Bookings</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link text-danger" (click)="logout()">LogOut</a>

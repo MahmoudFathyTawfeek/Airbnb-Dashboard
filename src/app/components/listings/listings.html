@@ -1,0 +1,46 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>All Listings</h3>
+    <a routerLink="/listings/add" class="btn btn-primary">+ Add Listing</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let listing of listings">
+      <div class="card h-100 shadow-sm">
+        <img [src]="listing.image" class="card-img-top" alt="{{ listing.title }}" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ listing.title }}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Unit ID:</strong> {{ listing.unitId }}
+            </li>
+            <li class="list-group-item">
+              <strong>Price Per Night:</strong> ${{ listing.pricePerNight }}
+            </li>
+            <li class="list-group-item">
+              <strong>Status:</strong>
+              <span class="badge" [ngClass]="listing.status === 'active' ? 'bg-success' : 'bg-secondary'">
+                {{ listing.status === 'active' ? 'Active' : 'Inactive' }}
+              </span>
+            </li>
+            <li class="list-group-item">
+              <strong>Created At:</strong>
+              <span *ngIf="listing.createdAt; else noDate">{{ listing.createdAt }}</span>
+              <ng-template #noDate><em>Not set</em></ng-template>
+            </li>
+            <li class="list-group-item">
+              <strong>Updated At:</strong>
+              <span *ngIf="listing.updatedAt; else noDate2">{{ listing.updatedAt }}</span>
+              <ng-template #noDate2><em>Not set</em></ng-template>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <button class="btn btn-danger btn-sm" (click)="deleteListing(listing.id)">🗑️ Delete</button>
+          <a [routerLink]="['/listings/update', listing.id]" class="btn btn-warning btn-sm">✏️ Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

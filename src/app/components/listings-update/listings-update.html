@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h3 class="mb-3">تعديل الإعلان</h3>
+
+  <form [formGroup]="listingForm" (ngSubmit)="updateListing()">
+    <div class="mb-3">
+      <label class="form-label">العنوان</label>
+      <input type="text" class="form-control" formControlName="title" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">رقم الوحدة</label>
+      <input type="number" class="form-control" formControlName="unitId" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">السعر لكل ليلة</label>
+      <input type="number" class="form-control" formControlName="pricePerNight" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">الحالة</label>
+      <select class="form-control" formControlName="status">
+        <option value="active">نشط</option>
+        <option value="inactive">متوقف</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">رابط الصورة</label>
+      <input type="text" class="form-control" formControlName="image" />
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 حفظ التغييرات</button>
+    <a routerLink="/listings" class="btn btn-secondary">🔙 إلغاء</a>
+  </form>
+</div>

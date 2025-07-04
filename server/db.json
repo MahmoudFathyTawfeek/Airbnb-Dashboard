@@ -6,25 +6,9 @@
       "phone": "201286948375",
       "isAdmin": true,
       "id": "7160"
-    },
-    {
-      "id": "78dd",
-      "name": "ali",
-      "email": "ali@gmail.com",
-      "phone": "201175839483",
-      "isAdmin": true
     }
   ],
   "units": [
-    {
-      "id": "1",
-      "title": "ohag",
-      "description": "avalible in sohag",
-      "location": "sohag",
-      "price": 3500,
-      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-      "isAvailable": true
-    },
     {
       "id": "2571",
       "title": "cairo",
@@ -40,9 +24,21 @@
       "description": "شقة فى سوهاج",
       "location": "sohag",
       "price": 20000,
-      "imageUrl": "no",
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
       "isAvailable": true
     }
   ],
-  "booking": []
+  "booking": [],
+  "listings": [
+    {
+      "title": "شقة فاخرة في القاهرة",
+      "unitId": 101,
+      "pricePerNight": 500,
+      "status": "inactive",
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "createdAt": "2024-07-01T12:00:00Z",
+      "updatedAt": "2025-07-04T23:01:38.122Z",
+      "id": "2520"
+    }
+  ]
 }
