@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { CommonModule } from '@angular/common';
-import { Sidebar } from '../sidebar/sidebar';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgChartsModule, Sidebar],
+  imports: [CommonModule, NgChartsModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -20,7 +20,10 @@ export class Home implements OnInit {
   bookingsCount = 0;
   occupancyRate = 0; // نسبة الإشغال الجديدة
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private cdr:ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadCounts();
@@ -35,18 +38,21 @@ export class Home implements OnInit {
       this.usersCount = data.length;
       usersLoaded = true;
       this.tryUpdateCharts(usersLoaded, unitsLoaded, bookingsLoaded);
+      this.cdr.detectChanges()
     });
 
     this.http.get<any[]>(`${environment.baseUrl}/units`).subscribe(data => {
       this.unitsCount = data.length;
       unitsLoaded = true;
       this.tryUpdateCharts(usersLoaded, unitsLoaded, bookingsLoaded);
+      this.cdr.detectChanges()
     });
 
     this.http.get<any[]>(`${environment.baseUrl}/bookings`).subscribe(data => {
       this.bookingsCount = data.length;
       bookingsLoaded = true;
       this.tryUpdateCharts(usersLoaded, unitsLoaded, bookingsLoaded);
+      this.cdr.detectChanges()
     });
   }
 

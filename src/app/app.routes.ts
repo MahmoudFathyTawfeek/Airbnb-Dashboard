@@ -14,6 +14,7 @@ import { UnitDetailsComponent } from './components/details/details';
 import { ListingsComponent } from './components/listings/listings';
 import { AddListingComponent } from './components/listings-form/listings-form';
 import { UpdateListingComponent } from './components/listings-update/listings-update';
+import { BookingsComponent } from './components/bookings/bookings';
 
 
 
@@ -36,8 +37,8 @@ export const routes: Routes = [{
       {path: 'units/:id',component: UnitDetailsComponent,title:'unit details'},
       { path: 'listings', component: ListingsComponent },
       { path: 'listings/add', component: AddListingComponent  },
-      {path: 'listings/update/:id',component: UpdateListingComponent}
-
+      {path: 'listings/update/:id',component: UpdateListingComponent},
+       { path: 'bookings', component: BookingsComponent },
       
     ]
   },

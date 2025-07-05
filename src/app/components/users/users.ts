@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -14,10 +14,13 @@ import { Iuser } from '../../models/iuser';
 export class UsersComponent implements OnInit {
   http = inject(HttpClient);
   users: Iuser[] = [];
-
+ constructor(
+    private cdr:ChangeDetectorRef
+ ){}
   ngOnInit(): void {
     this.http.get<Iuser[]>('http://localhost:3000/users').subscribe(data => {
       this.users = data;
+      this.cdr.detectChanges()
       console.log(this.users);
     });
   }

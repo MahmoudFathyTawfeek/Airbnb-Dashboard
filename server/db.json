@@ -26,9 +26,56 @@
       "price": 20000,
       "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
       "isAvailable": true
+    },
+    {
+      "id": "a118",
+      "title": "Sohag",
+      "description": "unit in sohag",
+      "location": "sohag",
+      "price": 500,
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "isAvailable": true
+    },
+    {
+      "id": "3b71",
+      "title": "Sohag",
+      "description": "unit in sohag",
+      "location": "sohag",
+      "price": 500,
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "isAvailable": false
     }
   ],
-  "booking": [],
+  "bookings": [
+    {
+      "id": 1,
+      "userId": 101,
+      "unitId": "f755",
+      "date": "2025-07-01",
+      "status": "confirmed"
+    },
+    {
+      "id": 2,
+      "userId": 102,
+      "unitId": "2571",
+      "date": "2025-07-02",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "userId": 103,
+      "unitId": "a118",
+      "date": "2025-07-02",
+      "status": "pending"
+    },
+    {
+      "id": 4,
+      "userId": 104,
+      "unitId": "3b71",
+      "date": "2025-07-03",
+      "status": "cancelled"
+    }
+  ],
   "listings": [
     {
       "title": "شقة فاخرة في القاهرة",
