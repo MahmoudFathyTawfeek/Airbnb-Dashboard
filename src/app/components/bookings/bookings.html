@@ -24,7 +24,7 @@
 
   <!-- ✅ الجدول -->
   <table class="table table-bordered table-striped table-hover text-center">
-    <thead class="table-dark">
+    <thead class="fixed-bg">
       <tr>
         <th>#</th>
         <th>User</th>
@@ -33,8 +33,8 @@
         <th>State</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let booking of filteredBookings" class="text-white">
+    <tbody class="fixed-bg2">
+      <tr *ngFor="let booking of paginatedBookings" class="text-white">
         <td>{{ booking.id }}</td>
         <td>{{ booking.userId }}</td>
         <td>{{ getUnitTitle(booking.unitId) }}</td>
@@ -52,4 +52,18 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- ✅ الباجيناشن -->
+  <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+    <button class="btn btn-primary btn-sm" (click)="prevPage()" [disabled]="currentPage === 1">
+      ◀ السابق
+    </button>
+
+    <span>صفحة {{ currentPage }} من {{ totalPages }}</span>
+
+    <button class="btn btn-primary btn-sm" (click)="nextPage()" [disabled]="currentPage === totalPages">
+      التالي ▶
+    </button>
+  </div>
+
 </div>

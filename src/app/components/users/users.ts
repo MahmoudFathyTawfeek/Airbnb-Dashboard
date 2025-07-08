@@ -14,32 +14,52 @@ import { Iuser } from '../../models/iuser';
 export class UsersComponent implements OnInit {
   http = inject(HttpClient);
   users: Iuser[] = [];
- constructor(
-    private cdr:ChangeDetectorRef
- ){}
+
+  currentPage = 1;
+  pageSize = 7;
+
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) {}
+
   ngOnInit(): void {
     this.http.get<Iuser[]>('http://localhost:3000/users').subscribe(data => {
       this.users = data;
-      this.cdr.detectChanges()
+      this.cdr.detectChanges();
       console.log(this.users);
     });
   }
 
-
-
-  
-  deleteUser(id: number) {
-  if (confirm('هل أنت متأكد من الحذف؟')) {
-    this.http.delete(`http://localhost:3000/users/${id}`).subscribe(() => {
-      this.users = this.users.filter(user => user.id !== id);
-      alert('تم حذف المستخدم');
-    }, error => {
-      alert('فشل في الحذف');
-      console.error(error);
-    });
+  get paginatedUsers(): Iuser[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.users.slice(startIndex, startIndex + this.pageSize);
   }
+
+  nextPage() {
+    if ((this.currentPage * this.pageSize) < this.users.length) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+get totalPages(): number {
+  return Math.ceil(this.users.length / this.pageSize);
 }
 
 
-
+  deleteUser(id: number) {
+    if (confirm('هل أنت متأكد من الحذف؟')) {
+      this.http.delete(`http://localhost:3000/users/${id}`).subscribe(() => {
+        this.users = this.users.filter(user => user.id !== id);
+        alert('تم حذف المستخدم');
+      }, error => {
+        alert('فشل في الحذف');
+        console.error(error);
+      });
+    }
+  }
 }

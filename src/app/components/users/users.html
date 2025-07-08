@@ -1,24 +1,24 @@
 <div class="container mt-4">
 
-
-<div class="d-flex justify-content-between align-items-center mb-3">
-  <h3>All Users</h3>
-  <a routerLink="/users/add" class="btn btn-primary">+ Add User</a>
-</div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>All Users</h3>
+    <a routerLink="/users/add" class="btn btn-primary">+ Add User</a>
+  </div>
 
   <table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark text-center">
+    <thead class="fixed-bg text-center">
       <tr>
         <th>Name</th>
         <th>E-Mail</th>
         <th>Phone</th>
         <th>Type</th>
-         <th>Delete</th>
-          <th>Update</th>
-      </tr>  
-    </thead>  
-    <tbody class="text-center">
-      <tr *ngFor="let user of users" class="text-white">
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+
+    <tbody class="text-center fixed-bg2">
+      <tr *ngFor="let user of paginatedUsers" class="text-white">
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.phone || 'Not Found' }}</td>
@@ -27,17 +27,36 @@
             {{ user.isAdmin ? 'Admin' : 'User' }}
           </span>
         </td>
-         <td>
-      <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">🗑️</button>
-
-    </td>
-    <td>
-        <a [routerLink]="['/users/update', user.id]" class="btn btn-warning btn-sm">
-  ✏️
-</a>
-</td>
-
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">🗑️</button>
+        </td>
+        <td>
+          <a [routerLink]="['/users/update', user.id]" class="btn btn-warning btn-sm">
+            ✏️
+          </a>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+    <button
+      class="btn btn-primary btn-sm"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+    >
+       ◀ السابق
+    </button>
+
+  <span>صفحة {{ currentPage }} من {{ totalPages }}</span>
+
+    <button
+      class="btn btn-primary btn-sm"
+      (click)="nextPage()"
+      [disabled]="currentPage * pageSize >= users.length"
+    >
+        التالي ▶
+    </button>
+  </div>
+
 </div>

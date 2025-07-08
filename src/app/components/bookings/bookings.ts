@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Ibooking } from '../../models/ibooking';
 import { CommonModule } from '@angular/common';
@@ -7,10 +7,9 @@ import { FormsModule } from '@angular/forms';
 
 import { environment } from '../../../environments/environment.development';
 
-
 @Component({
   selector: 'app-bookings',
-    imports: [CommonModule, HttpClientModule, RouterModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, RouterModule, FormsModule],
   standalone: true,
   templateUrl: './bookings.html',
   styleUrls: ['./bookings.css']
@@ -23,7 +22,14 @@ export class BookingsComponent implements OnInit {
   filterStatus = '';
   units: { id: string; title: string }[] = [];
 
-  constructor(private http: HttpClient) {}
+  // pagination
+  currentPage = 1;
+  pageSize = 7;
+
+  constructor(
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadBookings();
@@ -35,6 +41,7 @@ export class BookingsComponent implements OnInit {
       .subscribe(data => {
         this.bookings = data;
         this.filteredBookings = data;
+        this.cdr.detectChanges();
       });
   }
 
@@ -42,12 +49,13 @@ export class BookingsComponent implements OnInit {
     this.http.get<{ id: string; title: string }[]>(`${environment.baseUrl}/units`)
       .subscribe(data => {
         this.units = data;
+        this.cdr.detectChanges();
       });
   }
 
   getUnitTitle(unitId: string): string {
     const unit = this.units.find(u => u.id === unitId);
-    return unit ? unit.id : 'Unknown';
+    return unit ? unit.title : 'Unknown';
   }
 
   applyFilters() {
@@ -65,6 +73,8 @@ export class BookingsComponent implements OnInit {
 
       return matchesDate && matchesStatus;
     });
+
+    this.currentPage = 1; // ارجع لأول صفحة لما تتغير الفلاتر
   }
 
   resetFilters() {
@@ -72,5 +82,29 @@ export class BookingsComponent implements OnInit {
     this.filterEndDate = '';
     this.filterStatus = '';
     this.filteredBookings = this.bookings;
+    this.currentPage = 1;
   }
+
+  // pagination helpers
+  get paginatedBookings(): Ibooking[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.filteredBookings.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  nextPage() {
+    if ((this.currentPage * this.pageSize) < this.filteredBookings.length) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredBookings.length / this.pageSize);
+  }
+
 }
