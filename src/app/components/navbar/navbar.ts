@@ -22,10 +22,6 @@ export class Navbar {
     this.setTheme(this.isDarkMode);
   }
 
-  logout() {
-    localStorage.removeItem('isLoggedIn');
-    window.location.href = '/';
-  }
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
