@@ -5,7 +5,23 @@
     <a routerLink="/users/add" class="btn btn-primary">+ Add User</a>
   </div>
 
-  <table class="table table-bordered table-striped table-hover">
+  <!--  حقل البحث -->
+  <div class="input-group mb-3">
+    <input
+      type="email"
+      [(ngModel)]="searchEmail"
+      class="form-control"
+      placeholder="ابحث عن مستخدم بالإيميل"
+    />
+    <button class="btn btn-outline-primary" (click)="searchByEmail()">🔍 بحث</button>
+  </div>
+
+  <!--  رسالة خطأ -->
+  <div *ngIf="searchError" class="alert alert-warning text-center">
+    {{ searchError }}
+  </div>
+
+  <table class="table table-bordered table-striped table-hover" *ngIf="paginatedUsers.length > 0">
     <thead class="fixed-bg text-center">
       <tr>
         <th>Name</th>
@@ -39,7 +55,7 @@
     </tbody>
   </table>
 
-  <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
+  <div *ngIf="paginatedUsers.length > 0" class="d-flex justify-content-center align-items-center gap-2 mt-3">
     <button
       class="btn btn-primary btn-sm"
       (click)="prevPage()"
@@ -48,12 +64,12 @@
        ◀ السابق
     </button>
 
-  <span>صفحة {{ currentPage }} من {{ totalPages }}</span>
+    <span>صفحة {{ currentPage }} من {{ totalPages }}</span>
 
     <button
       class="btn btn-primary btn-sm"
       (click)="nextPage()"
-      [disabled]="currentPage * pageSize >= users.length"
+      [disabled]="currentPage * pageSize >= filteredUsers.length"
     >
         التالي ▶
     </button>

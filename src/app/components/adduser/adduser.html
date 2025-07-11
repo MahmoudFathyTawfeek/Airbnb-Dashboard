@@ -1,11 +1,9 @@
 <div class="container mt-4">
-  <h3 class="mb-3">Add new user</h3>
-
+  <div class="justify-content-center row">
+    <h3 class="col-md-10">Add new user</h3>
+ <button class="btn btn-primary col-md-2 " [routerLink]="['/users']" routerLinkActive="active" >Back</button>
+</div>
   <form [formGroup]="userForm" (ngSubmit)="addUser()">
-    <div class="mb-3">
-      <label class="form-label">User ID</label>
-      <input type="number" class="form-control" formControlName="id">
-    </div>
 
     <div class="mb-3">
       <label class="form-label">Name</label>

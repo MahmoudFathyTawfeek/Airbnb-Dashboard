@@ -1,5 +1,9 @@
 <div class="container mt-4">
-  <h3 class="mb-4">Add new units</h3>
+
+<div class="justify-content-center row">
+    <h3 class="col-md-10">Add new units</h3>
+ <button class="btn btn-primary col-md-2 " [routerLink]="['/units']" routerLinkActive="active" >Back</button>
+</div>
 
   <form [formGroup]="unitForm" (ngSubmit)="addUnit()">
   
