@@ -36,9 +36,9 @@
             </li>
           </ul>
         </div>
-        <div class="card-footer d-flex justify-content-between">
+       <div class="card-footer d-flex justify-content-between gap-1">
           <button class="btn btn-danger btn-sm" (click)="deleteListing(listing.id)">🗑️ Delete</button>
-          <a [routerLink]="['/listings/update', listing.id]" class="btn btn-warning btn-sm">✏️ Edit</a>
+         <a [routerLink]="['/listings/update', listing.id]" class="btn btn-warning btn-sm">✏️ Edit</a>
         </div>
       </div>
     </div>

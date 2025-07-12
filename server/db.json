@@ -4,7 +4,7 @@
       "name": "mahmoudtawfeek",
       "email": "mahmoud@gamil.com",
       "phone": "201286948375",
-      "isAdmin": true,
+      "isAdmin": false,
       "id": "7160"
     },
     {
@@ -16,15 +16,6 @@
     }
   ],
   "units": [
-    {
-      "id": "2571",
-      "title": "cairo",
-      "description": "efrefvre rb rtbr  rbrtrt rbrt",
-      "location": "ccccc",
-      "price": 23322,
-      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-      "isAvailable": true
-    },
     {
       "id": "f755",
       "title": "sohag",
@@ -51,33 +42,42 @@
       "price": 500,
       "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
       "isAvailable": false
+    },
+    {
+      "id": "ac79",
+      "title": "سوهاج",
+      "description": "فلا فى سوهاج",
+      "location": "سوهاج",
+      "price": 1600,
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "isAvailable": true
     }
   ],
   "bookings": [
     {
       "id": "1",
-      "userId": 101,
+      "userId": "67df",
       "unitId": "f755",
       "date": "2025-07-01",
       "status": "confirmed"
     },
     {
       "id": "2",
-      "userId": 102,
-      "unitId": "2571",
+      "userId": "7160",
+      "unitId": "ac79",
       "date": "2025-07-01",
       "status": "pending"
     },
     {
       "id": "3",
-      "userId": 103,
+      "userId": "67df",
       "unitId": "a118",
       "date": "2025-07-02",
       "status": "pending"
     },
     {
       "id": "4",
-      "userId": 104,
+      "userId": "7160",
       "unitId": "3b71",
       "date": "2025-07-03",
       "status": "cancelled"

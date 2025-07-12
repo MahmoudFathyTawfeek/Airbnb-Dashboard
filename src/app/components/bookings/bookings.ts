@@ -21,6 +21,7 @@ export class BookingsComponent implements OnInit {
   filterEndDate = '';
   filterStatus = '';
   units: { id: string; title: string }[] = [];
+  users: {id:string; email: string }[]=[];
 
   // pagination
   currentPage = 1;
@@ -34,6 +35,7 @@ export class BookingsComponent implements OnInit {
   ngOnInit(): void {
     this.loadBookings();
     this.loadUnits();
+    this.loadUsers();
   }
 
   loadBookings() {
@@ -50,12 +52,27 @@ export class BookingsComponent implements OnInit {
       .subscribe(data => {
         this.units = data;
         this.cdr.detectChanges();
+        console.log('Bookings:', this.bookings);
+      });
+  }
+
+    loadUsers() {
+    this.http.get<{ id: string; email: string }[]>(`${environment.baseUrl}/users`)
+      .subscribe(data => {
+        this.users = data;
+        this.cdr.detectChanges();
+        console.log('Users:', this.users);
       });
   }
 
   getUnitTitle(unitId: string): string {
     const unit = this.units.find(u => u.id === unitId);
     return unit ? unit.title : 'Unknown';
+  }
+
+   getUserEmail(userId: string): string {
+    const user = this.users.find(u => u.id === userId);
+    return user ? user.email : 'Unknown';
   }
 
   applyFilters() {

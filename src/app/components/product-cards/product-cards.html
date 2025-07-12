@@ -21,6 +21,7 @@
               {{ unit.isAvailable ? 'yes' : 'no' }}
             </span>
           </p> 
+          <button class="btn btn-danger btn-sm" (click)="deleteunit(unit.id)">🗑️ Delete</button>
           <a [routerLink]="['/units/', unit.id]" class="btn btn-info btn-sm">📄 Details</a>
 
         </div> 

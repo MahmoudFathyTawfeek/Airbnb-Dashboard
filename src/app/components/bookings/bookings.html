@@ -22,13 +22,13 @@
     </div>
   </div>
 
-  <!-- ✅ الجدول -->
+ 
   <table class="table table-bordered table-striped table-hover text-center">
     <thead class="fixed-bg">
       <tr>
         <th>#</th>
         <th>User</th>
-        <th>Unit ID</th>
+        <th>Unit Title</th>
         <th>Date</th>
         <th>State</th>
       </tr>
@@ -36,7 +36,7 @@
     <tbody class="fixed-bg2">
       <tr *ngFor="let booking of paginatedBookings" class="text-white">
         <td>{{ booking.id }}</td>
-        <td>{{ booking.userId }}</td>
+        <td>{{ getUserEmail(booking.userId) }}</td>
         <td>{{ getUnitTitle(booking.unitId) }}</td>
         <td>{{ booking.date }}</td>
         <td>
@@ -53,7 +53,7 @@
     </tbody>
   </table>
 
-  <!-- ✅ الباجيناشن -->
+
   <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
     <button class="btn btn-primary btn-sm" (click)="prevPage()" [disabled]="currentPage === 1">
       ◀ السابق

@@ -24,15 +24,15 @@ export class UnitDetailsComponent implements OnInit {
  ngOnInit(): void {
   const idParam = this.route.snapshot.paramMap.get('id');
   this.unitId = idParam ? +idParam : 0;
-  console.log('🔎 ID من الراوت:', this.unitId); // ✅ تأكيد الـ ID
+  console.log('🔎 ID من الراوت:', this.unitId); 
 
   this.http.get(`${environment.baseUrl}/units/${this.unitId}`).subscribe(
     data => {
       this.unit = data;
-      console.log('📦 بيانات الوحدة:', this.unit); // ✅ تأكيد البيانات
+      console.log(' بيانات الوحدة:', this.unit); 
     },
     error => {
-      console.error('❌ خطأ في تحميل الوحدة:', error);
+      console.error(' خطأ في تحميل الوحدة:', error);
     }
   );
 }

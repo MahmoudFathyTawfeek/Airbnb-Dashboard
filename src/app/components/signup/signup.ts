@@ -1,33 +1,40 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Iuser } from '../../models/iuser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { userService } from '../../service/user-service';
-
+import { RouterLink, Router } from '@angular/router';
+import { IauthUser } from '../../models/iauth-user';
 
 @Component({
   selector: 'app-signup',
-  imports: [ FormsModule, CommonModule,],
+  standalone: true,
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './signup.html',
   styleUrl: './signup.css'
 })
 export class Signup {
+  userProp: IauthUser = {} as IauthUser;
 
-  
-  userSer = inject(userService)  // انجكشن بطريقة تانى بدل ما اعمل كونستراكتور واعمل بريفيت للسيرفيس
+  constructor(private router: Router) {}
 
-  userProp:Iuser = {} as Iuser
+  addUser() {
+    // نتحقق إن البيانات كاملة
+    if (!this.userProp.email || !this.userProp.password) {
+      alert('من فضلك أدخل البريد الإلكتروني وكلمة المرور');
+      return;
+    }
 
-  addUser(){
-    // let u:Iuser = {
-    //   fname:"mahmoud",
-    //   email:"mahmoud@gmail.com",
-    //   password:"mahmoud123"
-    // }
-    this.userSer.addNewUser(this.userProp).subscribe((data)=>{
-      console.log(data)
-    })
+    // نحفظ بيانات المستخدم في localStorage
+    const adminData = {
+      email: this.userProp.email,
+      password: this.userProp.password
+    };
 
+    localStorage.setItem('admin', JSON.stringify(adminData));
+
+    alert('تم إنشاء الحساب بنجاح ✅');
+
+    // نوجهه إلى صفحة تسجيل الدخول
+    this.router.navigate(['/login']);
   }
 }

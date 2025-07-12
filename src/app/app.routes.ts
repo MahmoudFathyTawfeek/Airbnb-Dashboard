@@ -29,10 +29,10 @@ export const routes: Routes = [{
 
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: Home, title: 'Home_page' },
-      { path: 'users', component: UsersComponent, title: 'users',canActivate:[loginUserGuard]},
-      { path: 'users/add', component: AddUserComponent, title: 'add-users',canActivate:[loginUserGuard]},
-      { path: 'users/update/:id', component: EditUserComponent, title: 'edit-users',canActivate:[loginUserGuard]},
-      { path: 'Add-unit', component: AddUnitComponent, title: 'add-unit',canActivate:[loginUserGuard]},
+      { path: 'users', component: UsersComponent, title: 'users'},
+      { path: 'users/add', component: AddUserComponent, title: 'add-users'},
+      { path: 'users/update/:id', component: EditUserComponent, title: 'edit-users'},
+      { path: 'Add-unit', component: AddUnitComponent, title: 'add-unit'},
       { path: 'units', component: UnitsComponent,title:'units', },
       {path: 'units/:id',component: UnitDetailsComponent,title:'unit details'},
       { path: 'listings', component: ListingsComponent },
@@ -42,8 +42,8 @@ export const routes: Routes = [{
       
     ]
   },
-  { path: 'login', component: Login, title: 'login',canActivate:[loginUserGuard] },
-  { path: 'signUp', component: Signup, title: 'signUp',canActivate:[loginUserGuard] },
+  { path: 'login', component: Login, title: 'login'},
+  { path: 'signUp', component: Signup, title: 'signUp' },
   { path: '**', component: Notfound, title: 'Not_Found' },
 ];
 

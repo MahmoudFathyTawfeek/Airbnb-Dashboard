@@ -32,15 +32,14 @@ export class AddUnitComponent {
 
 addUnit() {
   if (this.unitForm.valid) {
-    // نحذف الـ id من الفورم لو موجود
     const { id, ...unitWithoutId } = this.unitForm.value;
 
     this.unitService.addUnit(unitWithoutId).subscribe(data => {
       console.log(data);
-      alert("✅ تمت إضافة الوحدة بنجاح");
+      alert("تمت إضافة الوحدة بنجاح");
     });
   } else {
-    alert("⚠️ الرجاء ملء جميع الحقول بشكل صحيح");
+    alert("الرجاء ملء جميع الحقول بشكل صحيح");
   }
 }
 

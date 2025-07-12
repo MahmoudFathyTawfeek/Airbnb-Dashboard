@@ -25,4 +25,18 @@ export class UnitsComponent implements OnInit {
        console.log(this.units);
     });
   }
+
+
+    deleteunit(id: number) {
+    if (confirm('هل أنت متأكد من الحذف؟')) {
+      this.http.delete(`http://localhost:3000/units/${id}`).subscribe(() => {
+        this.units = this.units.filter(unit => unit.id !== id);
+         this.cdr.detectChanges()
+        alert('تم حذف الإعلان');
+      }, error => {
+        alert('فشل في الحذف');
+        console.error(error);
+      });
+    }
+  }
 }
