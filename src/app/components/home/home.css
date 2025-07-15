@@ -37,3 +37,13 @@
 h3 {
   color: #f8f9fa;
 }
+.stat-circle {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}

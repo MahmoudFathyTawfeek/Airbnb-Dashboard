@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
-  imports: [FormsModule, CommonModule,ReactiveFormsModule, RouterLink]
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterLink]
 })
 export class Login {
   loginForm: FormGroup;
@@ -19,17 +19,21 @@ export class Login {
     });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+ onSubmit() {
+  if (this.loginForm.valid) {
+    const { email, password } = this.loginForm.value;
 
-      
-      if (email) {
-        localStorage.setItem('token', 'dummy-token');
-        this.router.navigate(['/home']);
-      } else {
-        alert('Invalid credentials');
-      }
+    // جلب بيانات المستخدم المسجل من sessionStorage (admin)
+    const admin = JSON.parse(sessionStorage.getItem('admin') || '{}');
+
+    if (admin.email === email && admin.password === password) {
+      // المستخدم صحيح ➝ سجل دخوله
+      sessionStorage.setItem('token', 'dummy-token');
+      this.router.navigate(['/home']);
+    } else {
+      alert('Invalid email or password');
     }
   }
+}
+
 }

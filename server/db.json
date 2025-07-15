@@ -13,6 +13,13 @@
       "email": "mahm888@gmail.com",
       "phone": "201277563987",
       "isAdmin": false
+    },
+    {
+      "id": "0f1c",
+      "name": "Ahmed",
+      "email": "ahmed@gmail.com",
+      "phone": "201187653567",
+      "isAdmin": false
     }
   ],
   "units": [
@@ -50,6 +57,15 @@
       "location": "سوهاج",
       "price": 1600,
       "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      "isAvailable": true
+    },
+    {
+      "id": "30de",
+      "title": "cairo",
+      "description": "شقة فى القاهرة",
+      "location": "القاهرة",
+      "price": 4000,
+      "imageUrl": "لاىفقاقفاقفا",
       "isAvailable": true
     }
   ],
