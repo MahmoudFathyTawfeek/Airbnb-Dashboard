@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let listing of listings">
+    <div class="col-md-3 mb-3" *ngFor="let listing of paginatedListings">
       <div class="card h-100 shadow-sm text-dark">
         <img [src]="listing.image" class="card-img-top" alt="{{ listing.title }}" style="height: 200px; object-fit: cover;">
         <div class="card-body">
@@ -36,11 +36,30 @@
             </li>
           </ul>
         </div>
-       <div class="card-footer d-flex justify-content-between gap-1">
+        <div class="card-footer d-flex justify-content-between gap-1">
           <button class="btn btn-danger btn-sm" (click)="deleteListing(listing.id)">🗑️ Delete</button>
-         <a [routerLink]="['/listings/update', listing.id]" class="btn btn-warning btn-sm">✏️ Edit</a>
+          <a [routerLink]="['/listings/update', listing.id]" class="btn btn-warning btn-sm">✏️ Edit</a>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Pagination Controls -->
+  <nav *ngIf="totalPages > 1" class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="goToPage(currentPage - 1)">Previous</button>
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.active]="currentPage === i + 1">
+        <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="goToPage(currentPage + 1)">Next</button>
+      </li>
+    </ul>
+  </nav>
+
 </div>

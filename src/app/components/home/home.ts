@@ -158,6 +158,7 @@ export class Home implements OnInit, AfterViewInit {
     labels: ['شقق', 'فلل', 'استوديو'],
     datasets: [{
       data: [45, 25, 30],
+      label: 'أنواع الوحدات',
       backgroundColor: ['#0d6efd', '#6610f2', '#20c997'],
       borderWidth: 2,
       borderColor: '#fff'
@@ -167,7 +168,7 @@ export class Home implements OnInit, AfterViewInit {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { position: 'bottom' },
+      legend: { position: 'top' },
       title: { display: true, text: 'أنواع الوحدات' }
     }
   };

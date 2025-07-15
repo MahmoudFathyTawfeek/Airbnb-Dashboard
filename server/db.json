@@ -67,6 +67,42 @@
       "price": 4000,
       "imageUrl": "لاىفقاقفاقفا",
       "isAvailable": true
+    },
+    {
+      "id": "4a01",
+      "title": "المنشاه",
+      "description": "محل فى المنشاه",
+      "location": "سوهاج",
+      "price": 5000,
+      "imageUrl": "kp'pi0-okpk",
+      "isAvailable": true
+    },
+    {
+      "id": "57a5",
+      "title": "المنشاه",
+      "description": "شقة فى المنشاه",
+      "location": "سوهاج",
+      "price": 5000,
+      "imageUrl": "kp'pi0-okpk",
+      "isAvailable": true
+    },
+    {
+      "id": "6c97",
+      "title": "طما",
+      "description": "شقة فى طما",
+      "location": "سوهاج",
+      "price": 5000,
+      "imageUrl": "kp'pi0-okpk",
+      "isAvailable": true
+    },
+    {
+      "id": "70ad",
+      "title": "سوهاج",
+      "description": "شقة فى سوهاج",
+      "location": "سوهاج",
+      "price": 5000,
+      "imageUrl": "kp'pi0-okpk",
+      "isAvailable": true
     }
   ],
   "bookings": [

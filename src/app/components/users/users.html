@@ -61,17 +61,17 @@
       (click)="prevPage()"
       [disabled]="currentPage === 1"
     >
-       ◀ prev
+       ◀ Previous
     </button>
 
-    <span>صفحة {{ currentPage }} من {{ totalPages }}</span>
+    <span> {{ currentPage }} / {{ totalPages }}</span>
 
     <button
       class="btn btn-primary btn-sm"
       (click)="nextPage()"
       [disabled]="currentPage * pageSize >= filteredUsers.length"
     >
-        next ▶
+        Next ▶
     </button>
   </div>
 
