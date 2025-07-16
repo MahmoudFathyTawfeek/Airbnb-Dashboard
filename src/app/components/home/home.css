@@ -1,17 +1,17 @@
 
 .main-dashboard {
-  width: 100vw; /* ياخد العرض كله */
+  width: 100vw; 
   min-height: 100vh;
   background-color: #121212;
   color: white;
-  padding: 0; /* شيل أي padding */
-  margin: 0;  /* شيل أي margin */
+  padding: 0; 
+  margin: 0; 
 }
 
 .container-fluid {
   width: 100%;
   max-width: 100%;
-  padding: 20px; /* لو تحب padding داخلي */
+  padding: 0px
 }
 
 .stat-card {
