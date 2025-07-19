@@ -5,7 +5,7 @@
  <button class="btn btn-primary col-md-2 " [routerLink]="['/units']" routerLinkActive="active" >Back</button>
 </div>
 
-  <form [formGroup]="unitForm" (ngSubmit)="addUnit()">
+  <form [formGroup]="unitForm" (ngSubmit)="addUnit()" class="m-2 p-3 rounded-3"  style="border: 1px solid black;">
   
     <div class="mb-3">
       <label class="form-label">Address</label>

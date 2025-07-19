@@ -45,7 +45,7 @@ export class UpdateListingComponent implements OnInit {
       },
       error: (err) => {
         console.error(err);
-        alert('فشل في تحميل البيانات');
+        alert('failed to load data');
       }
     });
   }
@@ -60,16 +60,16 @@ export class UpdateListingComponent implements OnInit {
 
       this.http.put(`http://localhost:3000/listings/${this.id}`, updated).subscribe({
         next: () => {
-          alert('تم تعديل الإعلان بنجاح');
+          alert('Ad updataed successfully');
           this.router.navigate(['/listings']);
         },
         error: (err) => {
           console.error(err);
-          alert('فشل في تعديل الإعلان');
+          alert('Fialed to update ad');
         }
       });
     } else {
-      alert('من فضلك املأ الحقول بشكل صحيح');
+      alert('Please, try again!!');
     }
   }
 }

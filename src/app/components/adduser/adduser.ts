@@ -30,11 +30,11 @@ export class AddUserComponent {
   addUser() {
     if (this.userForm.valid) {
       this.http.post<Iuser>(`${environment.baseUrl}/users`, this.userForm.value).subscribe(() => {
-        alert('تمت إضافة المستخدم بنجاح');
+        alert('User added successfully');
         this.router.navigate(['/users']);
       });  
     } else {
-      alert('من فضلك املأ الحقول بشكل صحيح');
+      alert('Please, enter a valid inputs');
     }
   }
 

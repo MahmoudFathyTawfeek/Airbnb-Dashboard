@@ -1,13 +1,15 @@
 <div class="container mt-4">
-  <h3 class="mb-4 text-primary">📅 Bookings List</h3>
 
+ <div class="d-flex justify-content-between align-items-center mb-3">
+     <h3 class="mb-4 ">📅 Bookings List</h3>
+  </div>
   <!-- ✅ الفلاتر -->
-  <div class="row mb-3 g-2">
+  <div class="row mb-3 g-2 ">
     <div class="col-md-3">
-      <input type="date" class="form-control" [(ngModel)]="filterStartDate" (change)="applyFilters()" placeholder="من">
+      <input type="date" class="form-control " [(ngModel)]="filterStartDate" (change)="applyFilters()" placeholder="From">
     </div>
     <div class="col-md-3">
-      <input type="date" class="form-control" [(ngModel)]="filterEndDate" (change)="applyFilters()" placeholder="إلى">
+      <input type="date" class="form-control" [(ngModel)]="filterEndDate" (change)="applyFilters()" placeholder="To">
     </div>
     <div class="col-md-3">
       <select class="form-select" [(ngModel)]="filterStatus" (change)="applyFilters()">

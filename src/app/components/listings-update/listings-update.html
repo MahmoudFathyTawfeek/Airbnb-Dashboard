@@ -1,36 +1,36 @@
 <div class="container mt-4">
-  <h3 class="mb-3">تعديل الإعلان</h3>
+  <h3 class="mb-3">Update Ads</h3>
 
   <form [formGroup]="listingForm" (ngSubmit)="updateListing()">
     <div class="mb-3">
-      <label class="form-label">العنوان</label>
+      <label class="form-label text-dark">Address</label>
       <input type="text" class="form-control" formControlName="title" />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">رقم الوحدة</label>
+      <label class="form-label text-dark">Unit ID</label>
       <input type="number" class="form-control" formControlName="unitId" />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">السعر لكل ليلة</label>
+      <label class="form-label text-dark">Price per night</label>
       <input type="number" class="form-control" formControlName="pricePerNight" />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">الحالة</label>
+      <label class="form-label text-dark">State</label>
       <select class="form-control" formControlName="status">
-        <option value="active">نشط</option>
-        <option value="inactive">متوقف</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inctive</option>
       </select>
     </div>
 
     <div class="mb-3">
-      <label class="form-label">رابط الصورة</label>
+      <label class="form-label text-dark">Image URL</label>
       <input type="text" class="form-control" formControlName="image" />
     </div>
 
-    <button type="submit" class="btn btn-success">💾 حفظ التغييرات</button>
-    <a routerLink="/listings" class="btn btn-secondary">🔙 إلغاء</a>
+    <button type="submit" class="btn btn-success">💾 Save changes</button>
+    <a routerLink="/listings" class="btn btn-secondary">🔙 Cancel</a>
   </form>
 </div>

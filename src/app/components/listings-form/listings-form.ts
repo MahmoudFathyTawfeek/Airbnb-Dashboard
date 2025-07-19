@@ -31,11 +31,11 @@ export class AddListingComponent {
   addListing() {
     if (this.listingForm.valid) {
       this.http.post<Ilisting>(`${environment.baseUrl}/listings`, this.listingForm.value).subscribe(() => {
-        alert('تمت إضافة الإعلان بنجاح');
+        alert('New ads added successfully');
         this.router.navigate(['/listings']);
       });
     } else {
-      alert('من فضلك املأ الحقول بشكل صحيح');
+      alert('Please, enter correct inputs');
     }
   }
 }

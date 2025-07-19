@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'AirBNB_Dashboard';
+  protected title = 'Angular_ECommerce';
 }

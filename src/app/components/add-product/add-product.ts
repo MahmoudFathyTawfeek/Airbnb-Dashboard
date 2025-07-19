@@ -36,10 +36,10 @@ addUnit() {
 
     this.unitService.addUnit(unitWithoutId).subscribe(data => {
       console.log(data);
-      alert("تمت إضافة الوحدة بنجاح");
+      alert("Uint added successfully");
     });
   } else {
-    alert("الرجاء ملء جميع الحقول بشكل صحيح");
+    alert("Please, enter correct inputs");
   }
 }
 

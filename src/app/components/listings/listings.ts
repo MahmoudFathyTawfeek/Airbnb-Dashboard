@@ -45,7 +45,7 @@ export class ListingsComponent implements OnInit {
   }
 
   deleteListing(id: number) {
-    if (confirm('هل أنت متأكد من الحذف؟')) {
+    if (confirm('This ads will be delete')) {
       this.http.delete(`http://localhost:3000/listings/${id}`).subscribe(() => {
         this.listings = this.listings.filter(listing => listing.id !== id);
         this.totalPages = Math.ceil(this.listings.length / this.itemsPerPage);
@@ -53,9 +53,9 @@ export class ListingsComponent implements OnInit {
           this.currentPage = this.totalPages;
         }
         this.getPaginatedListings();
-        alert('تم حذف الإعلان');
+        alert('Deleted successfully');
       }, error => {
-        alert('فشل في الحذف');
+        alert('There is an error');
         console.error(error);
       });
     }

@@ -3,7 +3,7 @@
     <h3 class="col-md-10">Add new user</h3>
  <button class="btn btn-primary col-md-2 " [routerLink]="['/users']" routerLinkActive="active" > Back </button>
 </div>
-  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+  <form [formGroup]="userForm" (ngSubmit)="addUser()" class="m-2 p-3 rounded-3"  style="border: 1px solid black;">
 
     <div class="mb-3">
       <label class="form-label">Name</label>

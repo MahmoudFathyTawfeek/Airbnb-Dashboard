@@ -95,10 +95,10 @@ export class Home implements OnInit, AfterViewInit {
 
   // Bar Chart
   public barChartData: ChartConfiguration<'bar'>['data'] = {
-    labels: ['مستخدمين', 'وحدات', 'حجوزات', 'إعلانات'],
+    labels: ['Users', 'Units', 'Bookings', 'Ads'],
     datasets: [{
       data: [0, 0, 0, 0],
-      label: 'عدد',
+      label: 'Number',
       backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545'],
       borderRadius: 8
     }]
@@ -108,15 +108,15 @@ export class Home implements OnInit, AfterViewInit {
     maintainAspectRatio: false,
     plugins: {
       legend: { display: true },
-      title: { display: true, text: 'إحصائيات إجمالية' }
+      title: { display: true, text: 'Overall Statistics' }
     }
   };
 
   // Pie Chart
   public pieChartData: ChartConfiguration<'pie'>['data'] = {
-    labels: ['مستخدمين', 'وحدات', 'حجوزات', 'إعلانات'],
+    labels: ['Users', 'Units', 'Bookings', 'Ads'],
     datasets: [{
-      label: 'النسب',
+      label: 'Percentages',
       data: [0, 0, 0, 0],
       backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545'],
       borderWidth: 2,
@@ -128,16 +128,16 @@ export class Home implements OnInit, AfterViewInit {
     maintainAspectRatio: false,
     plugins: {
       legend: { display: true },
-      title: { display: true, text: 'توزيع النسب' }
+      title: { display: true, text: 'Distribution of Percentages' }
     }
   };
 
   // Line Chart
   public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو'],
+    labels: ['Jan', 'Fep', 'Mar', 'Apr', 'May', 'Jun'],
     datasets: [{
       data: [5, 10, 15, 12, 20, 30],
-      label: 'المستخدمين الجدد',
+      label: 'New Users',
       borderColor: '#0dcaf0',
       backgroundColor: 'rgba(13, 202, 240, 0.3)',
       fill: true,
@@ -149,16 +149,16 @@ export class Home implements OnInit, AfterViewInit {
     maintainAspectRatio: false,
     plugins: {
       legend: { position: 'top' },
-      title: { display: true, text: 'عدد المستخدمين شهريًا' }
+      title: { display: true, text: 'Monthly Users' }
     }
   };
 
   // Doughnut Chart
   public doughnutChartData: ChartConfiguration<'doughnut'>['data'] = {
-    labels: ['شقق', 'فلل', 'استوديو'],
+    labels: ['Apartments', 'Villas', 'Studios'],
     datasets: [{
       data: [45, 25, 30],
-      label: 'أنواع الوحدات',
+      label: 'Units Tupes',
       backgroundColor: ['#0d6efd', '#6610f2', '#20c997'],
       borderWidth: 2,
       borderColor: '#fff'
@@ -169,7 +169,7 @@ export class Home implements OnInit, AfterViewInit {
     maintainAspectRatio: false,
     plugins: {
       legend: { position: 'top' },
-      title: { display: true, text: 'أنواع الوحدات' }
+      title: { display: true, text: 'Units Types' }
     }
   };
 }
