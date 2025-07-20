@@ -56,14 +56,14 @@ export class UsersComponent implements OnInit {
     return Math.ceil(this.filteredUsers.length / this.pageSize);
   }
 
-  deleteUser(id: number) {
-    if (confirm('هل أنت متأكد من الحذف؟')) {
+  deleteUser(id: number | string) {
+    if (confirm('Are you sure you want to delete this user?')) {
       this.http.delete(`http://localhost:3000/users/${id}`).subscribe(() => {
         this.users = this.users.filter(user => user.id !== id);
         this.filteredUsers = this.filteredUsers.filter(user => user.id !== id);
-        alert('تم حذف المستخدم');
+        alert('User deleted successfully');
       }, error => {
-        alert('فشل في الحذف');
+        alert('Failed to delete user');
         console.error(error);
       });
     }
@@ -86,7 +86,7 @@ export class UsersComponent implements OnInit {
       this.currentPage = 1;
     } else {
       this.filteredUsers = [];
-      this.searchError = 'لا يوجد مستخدم بهذا الإيميل';
+      this.searchError = 'This user e-mail not found';
     }
   }
 }

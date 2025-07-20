@@ -14,7 +14,7 @@ import { Ilisting } from '../../models/ilisting';
 })
 export class UpdateListingComponent implements OnInit {
   listingForm!: FormGroup;
-  id!: number;
+  id!:string;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +23,7 @@ export class UpdateListingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.id = String(this.route.snapshot.paramMap.get('id'));
 
     this.listingForm = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.minLength(3)]),

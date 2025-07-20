@@ -1,5 +1,5 @@
 export interface Ilisting {
-  id: number;
+  id: number | string;
   title: string;
   unitId: number;
   pricePerNight: number;

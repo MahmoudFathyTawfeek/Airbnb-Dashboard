@@ -14,3 +14,8 @@ a.active{
   height: 50px;
   object-fit: contain;
 }
+
+
+.blackMode{
+  background-color: black;
+}

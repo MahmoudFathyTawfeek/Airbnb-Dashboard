@@ -45,16 +45,16 @@ export class UnitsComponent implements OnInit {
   }
 
   deleteunit(id: number) {
-    if (confirm('هل أنت متأكد من الحذف؟')) {
+    if (confirm(`Unit ${id} will be deleted`)) {
       this.http.delete(`http://localhost:3000/units/${id}`).subscribe(() => {
         this.units = this.units.filter(unit => unit.id !== id);
         this.totalPages = Math.ceil(this.units.length / this.itemsPerPage);
         if (this.currentPage > this.totalPages) this.currentPage = this.totalPages || 1;
         this.getPaginatedUnits();
         this.cdr.detectChanges();
-        alert('تم حذف الإعلان');
+        alert(`Unit deleted successfully`);
       }, error => {
-        alert('فشل في الحذف');
+        alert(`Failed to delete unit ${id}`);
         console.error(error);
       });
     }

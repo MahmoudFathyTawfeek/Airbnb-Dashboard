@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment.development';
+import { Iuser } from '../../models/iuser';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,7 +15,7 @@ import { environment } from '../../../environments/environment.development';
 })
 export class EditUserComponent implements OnInit {
   userForm!: FormGroup;
-  userId!: number;
+   userId!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,36 +23,41 @@ export class EditUserComponent implements OnInit {
     private router: Router
   ) {}
   
-  ngOnInit(): void {
+   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
-    this.userId = idParam ? +idParam : 0;
+    this.userId = idParam ?? '';  
 
     this.userForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', Validators.required),
-      isAdmin: new FormControl(false) // checkbox
+      isAdmin: new FormControl(false)
     });
 
     this.loadUser();
   }
 
   loadUser() {
-    this.http.get<any>(`${environment.baseUrl}/users/${this.userId}`).subscribe(data => {
-      this.userForm.patchValue(data);
-    }, error => {
-      console.error('❌ فشل تحميل بيانات المستخدم:', error);
+    this.http.get<Iuser>(`${environment.baseUrl}/users/${this.userId}`).subscribe({
+      next: (user) => {
+        this.userForm.patchValue(user);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('failed to load data');
+      }
     });
   }
 
   updateUser() {
     if (this.userForm.valid) {
       this.http.put(`${environment.baseUrl}/users/${this.userId}`, this.userForm.value).subscribe(() => {
-        alert('✅ تم تحديث بيانات المستخدم بنجاح');
+        alert('User data updated successfully');
         this.router.navigate(['/users']);
       }, error => {
-        console.error('❌ فشل التحديث:', error);
+        console.error('Failed to update user', error);
       });
     }
   }
 }
+

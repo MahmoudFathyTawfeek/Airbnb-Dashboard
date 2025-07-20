@@ -11,9 +11,9 @@
       type="email"
       [(ngModel)]="searchEmail"
       class="form-control"
-      placeholder="Search by"
+      placeholder="Search by E-Mail"
     />
-    <button class="btn btn-outline-primary" (click)="searchByEmail()">🔍 بحث</button>
+    <button class="btn btn-outline-primary" (click)="searchByEmail()">🔍 Search</button>
   </div>
 
   <!--  error message -->
@@ -40,7 +40,7 @@
         <td>{{ user.phone || 'Not Found' }}</td>
         <td>
           <span class="badge" [ngClass]="user.isAdmin ? 'bg-success' : 'bg-secondary'">
-            {{ user.isAdmin ? 'Admin' : 'User' }}
+            {{ user.isAdmin ? 'Owner' : 'Tenant' }}
           </span>
         </td>
         <td>
