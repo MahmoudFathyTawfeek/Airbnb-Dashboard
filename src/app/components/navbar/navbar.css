@@ -16,6 +16,6 @@ a.active{
 }
 
 
-.blackMode{
-  background-color: black;
+.bg-black {
+  background-color: #000 !important;
 }

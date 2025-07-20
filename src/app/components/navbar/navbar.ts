@@ -30,16 +30,16 @@ export class Navbar {
 
   private setTheme(isDark: boolean) {
     if (isDark) {
-      this.renderer.addClass(document.body, 'bg-dark');
+      this.renderer.addClass(document.body, 'bg-black');
       this.renderer.removeClass(document.body, 'bg-light');
 
       this.renderer.addClass(document.body, 'text-light');
-      this.renderer.removeClass(document.body, 'text-dark');
+      this.renderer.removeClass(document.body, 'text-black');
     } else {
       this.renderer.addClass(document.body, 'bg-light');
-      this.renderer.removeClass(document.body, 'bg-dark');
+      this.renderer.removeClass(document.body, 'bg-black');
 
-      this.renderer.addClass(document.body, 'text-dark');
+      this.renderer.addClass(document.body, 'text-black');
       this.renderer.removeClass(document.body, 'text-light');
     }
 

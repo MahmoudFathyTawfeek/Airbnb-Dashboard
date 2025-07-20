@@ -44,7 +44,7 @@ export class ListingsComponent implements OnInit {
     }
   }
 
-  deleteListing(id: number) {
+  deleteListing(id: number | string) {
     if (confirm('This ads will be delete')) {
       this.http.delete(`http://localhost:3000/listings/${id}`).subscribe(() => {
         this.listings = this.listings.filter(listing => listing.id !== id);
