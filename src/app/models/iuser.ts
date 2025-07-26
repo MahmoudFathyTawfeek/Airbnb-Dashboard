@@ -3,5 +3,9 @@ export interface Iuser {
   name: string;
   email: string;
   phone?: string;
+  password: string;
+  gender: 'male' | 'female';
+  dateOfBirth: Date; 
   isAdmin?: boolean;
+  isVerified: boolean;
 }

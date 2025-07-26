@@ -1,14 +1,15 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { ChartConfiguration } from 'chart.js';
 import { NgChartsModule, BaseChartDirective } from 'ng2-charts';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgChartsModule],
+  imports: [CommonModule, NgChartsModule,  RouterLink, RouterModule  ],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -19,13 +20,16 @@ export class Home implements OnInit, AfterViewInit {
   bookingsCount = 0;
   adsCount = 0;
   occupancyRate = 0;
-
+isDarkMode: boolean = true;
   @ViewChildren(BaseChartDirective) charts!: QueryList<BaseChartDirective>;
 
   constructor(
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2
+  ) {
+    this.setTheme(this.isDarkMode);
+  }
 
   ngOnInit(): void {
     this.loadCounts();
@@ -172,4 +176,31 @@ export class Home implements OnInit, AfterViewInit {
       title: { display: true, text: 'Units Types' }
     }
   };
+
+  isSidebarOpen: boolean = false;
+
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
+}
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    this.setTheme(this.isDarkMode);
+  }
+
+  private setTheme(isDark: boolean) {
+    if (isDark) {
+      this.renderer.addClass(document.body, 'bg-black');
+      this.renderer.removeClass(document.body, 'bg-light');
+
+      this.renderer.addClass(document.body, 'text-light');
+      this.renderer.removeClass(document.body, 'text-black');
+    } else {
+      this.renderer.addClass(document.body, 'bg-light');
+      this.renderer.removeClass(document.body, 'bg-black');
+
+      this.renderer.addClass(document.body, 'text-black');
+      this.renderer.removeClass(document.body, 'text-light');
+    }
+}
 }

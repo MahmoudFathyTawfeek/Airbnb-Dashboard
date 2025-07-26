@@ -1,53 +1,83 @@
-<div class="container-fluid m-0 p-0" style="min-height: 100vh;">
+<div class="d-flex">
 
-  <div class="flex-grow-1">
-    <div class="container-fluid py-4">
-      
-      <h3 class="text-center mb-5 text-primary">System Statistics</h3>
-
-      <div class="row mb-5 text-center">
-  <div class="col-md-2">
-    <div class="card rounded-circle p-3 shadow-sm bg-primary text-dark" style="width: 120px; height: 120px; margin: auto;">
-      <div class="fs-4 fw-bold">{{ usersCount }}</div>
-      <div style="font-size: 14px;">Users</div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class="card rounded-circle p-3 shadow-sm bg-success text-dark" style="width: 120px; height: 120px; margin: auto;">
-      <div class="fs-4 fw-bold">{{ unitsCount }}</div>
-      <div style="font-size: 14px;">Units</div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class="card rounded-circle p-3 shadow-sm bg-warning text-dark" style="width: 120px; height: 120px; margin: auto;">
-      <div class="fs-4 fw-bold">{{ bookingsCount }}</div>
-      <div style="font-size: 14px;">Bookings</div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class="card rounded-circle p-3 shadow-sm bg-danger text-dark" style="width: 120px; height: 120px; margin: auto;">
-      <div class="fs-4 fw-bold">{{ adsCount }}</div>
-      <div style="font-size: 14px;">Ads</div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class="card rounded-circle p-3 shadow-sm bg-info text-dark" style="width: 280px; height: 120px; margin: auto;">
-      <div class="fs-4 fw-bold">{{ occupancyRate }}%</div>
-      <div style="font-size: 14px;">Units Occupancy Rate</div>
-    </div>
-  </div>
+  <!-- Sidebar -->
+<div class="col-md-2 text-white p-3 d-none d-md-block text-center" style="min-height: 100vh; border-right: 1px solid rgb(61, 4, 114);">   
+  
+ <div class="sidebar-logo text-center py-3">
+  <img src="assets/logo.png" alt="App Logo" class="img-fluid" style="max-width: 150px;" />
 </div>
 
+  
+  <h4 class="mb-4 text-primary">Dashboard</h4>
+    <button class="btn btn-outline-primary btn-sm" (click)="toggleTheme()">
+            {{ isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode' }}
+          </button>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/home" routerLinkActive="active">🏠 Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/users" routerLinkActive="active">👥 Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/units" routerLinkActive="active">🏢 Units</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/listings" routerLinkActive="active">📢 Ads</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/bookings" routerLinkActive="active">📅 Bookings</a>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+   <div class="col-md-10 col-12 p-4">
+
+      <h3 class="text-center mb-5 text-primary">System Statistics</h3>
+
+      <!-- كروت الإحصائيات -->
+      <div class="row mb-5 text-center">
+        <div class="col-md-2">
+          <div class="card rounded-circle p-3 shadow-sm bg-primary text-dark" style="width: 120px; height: 120px; margin: auto;">
+            <div class="fs-4 fw-bold">{{ usersCount }}</div>
+            <div style="font-size: 14px;">Users</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card rounded-circle p-3 shadow-sm bg-success text-dark" style="width: 120px; height: 120px; margin: auto;">
+            <div class="fs-4 fw-bold">{{ unitsCount }}</div>
+            <div style="font-size: 14px;">Units</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card rounded-circle p-3 shadow-sm bg-warning text-dark" style="width: 120px; height: 120px; margin: auto;">
+            <div class="fs-4 fw-bold">{{ bookingsCount }}</div>
+            <div style="font-size: 14px;">Bookings</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card rounded-circle p-3 shadow-sm bg-danger text-dark" style="width: 120px; height: 120px; margin: auto;">
+            <div class="fs-4 fw-bold">{{ adsCount }}</div>
+            <div style="font-size: 14px;">Ads</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card rounded-circle p-3 shadow-sm bg-info text-dark" style="width: 280px; height: 120px; margin: auto;">
+            <div class="fs-4 fw-bold">{{ occupancyRate }}%</div>
+            <div style="font-size: 14px;">Units Occupancy Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts -->
       <div class="row g-4">
         <div class="col-md-6">
           <div class="card chart-card">
             <div class="card-header bg-primary text-white fw-bold">Overall Statistics</div>
             <div class="card-body">
-              <canvas baseChart
-                      [data]="barChartData"
-                      [options]="barChartOptions"
-                      chartType="bar">
-              </canvas>
+              <canvas baseChart [data]="barChartData" [options]="barChartOptions" chartType="bar"></canvas>
             </div>
           </div>
         </div>
@@ -56,11 +86,7 @@
           <div class="card chart-card">
             <div class="card-header bg-success text-white fw-bold">Percentage Distribution</div>
             <div class="card-body">
-              <canvas baseChart
-                      [data]="pieChartData"
-                      [options]="pieChartOptions"
-                      chartType="pie">
-              </canvas>
+              <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" chartType="pie"></canvas>
             </div>
           </div>
         </div>
@@ -69,11 +95,7 @@
           <div class="card chart-card">
             <div class="card-header bg-info text-white fw-bold">User Growth Over the Months</div>
             <div class="card-body">
-              <canvas baseChart
-                      [data]="lineChartData"
-                      [options]="lineChartOptions"
-                      chartType="line">
-              </canvas>
+              <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" chartType="line"></canvas>
             </div>
           </div>
         </div>
@@ -82,16 +104,14 @@
           <div class="card chart-card">
             <div class="card-header bg-warning text-dark fw-bold">Unit Types</div>
             <div class="card-body">
-              <canvas baseChart
-                      [data]="doughnutChartData"
-                      [options]="doughnutChartOptions"
-                      chartType="doughnut">
-              </canvas>
+              <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" chartType="doughnut"></canvas>
             </div>
           </div>
         </div>
       </div>
 
     </div>
+
+    
   </div>
-</div>
+

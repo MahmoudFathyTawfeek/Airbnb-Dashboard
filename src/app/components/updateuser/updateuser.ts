@@ -15,22 +15,28 @@ import { Iuser } from '../../models/iuser';
 })
 export class EditUserComponent implements OnInit {
   userForm!: FormGroup;
-   userId!: string;
+  userId!: string;
+  showPassword: boolean = false;
+
 
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router
   ) {}
-  
-   ngOnInit(): void {
+
+  ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
-    this.userId = idParam ?? '';  
+    this.userId = idParam ?? '';
 
     this.userForm = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl(''), // يمكن جعله Required حسب الحاجة
       phone: new FormControl('', Validators.required),
+      gender: new FormControl(''),
+      dateOfBirth: new FormControl(''),
+      isVerified: new FormControl(false),
       isAdmin: new FormControl(false)
     });
 
@@ -44,20 +50,23 @@ export class EditUserComponent implements OnInit {
       },
       error: (err) => {
         console.error(err);
-        alert('failed to load data');
+        alert('Failed to load user data');
       }
     });
   }
 
   updateUser() {
     if (this.userForm.valid) {
-      this.http.put(`${environment.baseUrl}/users/${this.userId}`, this.userForm.value).subscribe(() => {
-        alert('User data updated successfully');
-        this.router.navigate(['/users']);
-      }, error => {
-        console.error('Failed to update user', error);
+      this.http.put(`${environment.baseUrl}/users/${this.userId}`, this.userForm.value).subscribe({
+        next: () => {
+          alert('User data updated successfully');
+          this.router.navigate(['/users']);
+        },
+        error: (error) => {
+          console.error('Failed to update user', error);
+          alert('Update failed. Try again.');
+        }
       });
     }
   }
 }
-

@@ -2,10 +2,27 @@
 .main-dashboard {
   width: 100vw; 
   min-height: 100vh;
-  background-color: #121212;
+
   color: white;
   padding: 0; 
   margin: 0; 
+}
+a.active{
+    color: black !important;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #ffc107 !important;
+}
+.dark {
+  background-color: #222;
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
 }
 
 .container-fluid {
@@ -47,3 +64,5 @@ h3 {
   align-items: center;
 
 }
+
+

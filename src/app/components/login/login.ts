@@ -21,14 +21,7 @@ export class Login {
 
  onSubmit() {
   if (this.loginForm.valid) {
-    const { email, password } = this.loginForm.value;
-
-    // جلب بيانات المستخدم المسجل من sessionStorage (admin)
-    const admin = JSON.parse(sessionStorage.getItem('admin') || '{}');
-
-    if (admin.email === email && admin.password === password) {
-      // المستخدم صحيح ➝ سجل دخوله
-      sessionStorage.setItem('token', 'dummy-token');
+    
       this.router.navigate(['/home']);
     } else {
       alert('Invalid email or password');
@@ -36,4 +29,4 @@ export class Login {
   }
 }
 
-}
+

@@ -16,15 +16,20 @@ import { Iuser } from '../../models/iuser';
 export class AddUserComponent {
   userForm: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.userForm = new FormGroup({
-      
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl(''),
-      isAdmin: new FormControl(false)
-    });
-  }
+constructor(private http: HttpClient, private router: Router) {
+  this.userForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    phone: new FormControl('', [Validators.pattern('^[0-9]{10,15}$')]),
+
+    gender: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl('', Validators.required),
+    isVerified: new FormControl(false),
+    isAdmin: new FormControl(false),
+  });
+}
+
 
 
   addUser() {

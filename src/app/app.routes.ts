@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { Main } from './components/main/main';
 import { Home } from './components/home/home';
 import { loginUserGuard } from './Gards/login-user-guard';
-import { Signup } from './components/signup/signup';
 import { Notfound } from './components/notfound/notfound';
 import { Login } from './components/login/login';
 import { AddUnitComponent } from './components/add-product/add-product';
@@ -28,7 +27,7 @@ export const routes: Routes = [{
     children: [
 
       { path: '', redirectTo: '/login', pathMatch: 'full' },
-      { path: 'home', component: Home, title: 'Home_page' },
+     
       { path: 'users', component: UsersComponent, title: 'users'},
       { path: 'users/add', component: AddUserComponent, title: 'add-users'},
       { path: 'users/update/:id', component: EditUserComponent, title: 'edit-users'},
@@ -42,8 +41,8 @@ export const routes: Routes = [{
       
     ]
   },
+   { path: 'home', component: Home, title: 'Home_page' },
   { path: 'login', component: Login, title: 'login'},
-  { path: 'signUp', component: Signup, title: 'signUp' },
   { path: '**', component: Notfound, title: 'Not_Found' },
 ];
 

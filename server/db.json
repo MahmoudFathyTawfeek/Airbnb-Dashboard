@@ -3,79 +3,101 @@
     {
       "name": "Mahmoud_Tawfeek",
       "email": "mahm888@gmail.com",
+      "password": "password",
       "phone": "201277563987",
+      "gender": "male",
+      "dateOfBirth": "1997-02-19",
+      "isVerified": true,
       "isAdmin": true,
       "id": "67df"
     },
     {
-      "name": "Ahmed",
-      "email": "ahmed@gmail.com",
-      "phone": "201187653567",
-      "isAdmin": false,
-      "id": "0f1c"
-    },
-    {
-      "id": "d268",
       "name": "Alaa",
       "email": "alaa@gmail.com",
+      "password": "dfsdbdfgvbsdrf",
       "phone": "01187976545",
-      "isAdmin": false
+      "gender": "male",
+      "dateOfBirth": "2024-11-11",
+      "isVerified": true,
+      "isAdmin": true,
+      "id": "d268"
     },
     {
-      "name": "Atef",
-      "email": "atef@gmail.com",
-      "phone": "01198767875",
-      "isOwner": false,
-      "id": "6571"
-    },
-    {
-      "id": "82e8",
       "name": "mostafa",
       "email": "mostafa@gmail.com",
+      "password": "nnnnnnnnnnn",
       "phone": "0123466564",
-      "isAdmin": false
+      "gender": "male",
+      "dateOfBirth": "2025-07-21",
+      "isVerified": true,
+      "isAdmin": true,
+      "id": "82e8"
     },
     {
-      "id": "f60a",
       "name": "fared",
       "email": "fared@gmail.com",
+      "password": "ooooooo",
       "phone": "01265657483",
-      "isAdmin": false
+      "gender": "male",
+      "dateOfBirth": "",
+      "isVerified": true,
+      "isAdmin": false,
+      "id": "f60a"
     },
     {
       "name": "Saad",
       "email": "saad@gmail.com",
+      "password": "fgfgfgfg",
       "phone": "01123458543",
+      "gender": "male",
+      "dateOfBirth": "",
+      "isVerified": false,
       "isAdmin": false,
       "id": "8a87"
     },
     {
-      "id": "aed9",
       "name": "Hammam",
       "email": "hammam@gmail.com",
+      "password": "tttttttt",
       "phone": "201278657383",
-      "isAdmin": false
-    },
-    {
-      "id": "2ff1",
-      "name": "tamer",
-      "email": "tamer@gmail.com",
-      "phone": "01275647584",
-      "isAdmin": false
-    },
-    {
-      "id": "1c91",
-      "name": "sssss",
-      "email": "sss@gmail.com",
-      "phone": "234324234324",
-      "isAdmin": false
+      "gender": "female",
+      "dateOfBirth": "2025-07-07",
+      "isVerified": true,
+      "isAdmin": false,
+      "id": "aed9"
     },
     {
       "name": "Bahaa",
       "email": "bahaa@gmail.com",
+      "password": "hjkloiuyh",
       "phone": "01275938488",
-      "isOwner": true,
+      "gender": "male",
+      "dateOfBirth": "",
+      "isVerified": false,
+      "isAdmin": false,
       "id": "185f"
+    },
+    {
+      "name": "Gad",
+      "email": "gad@gmail.com",
+      "password": "mmmmmmmmm",
+      "phone": "012879875644",
+      "gender": "male",
+      "dateOfBirth": "2025-07-13",
+      "isVerified": false,
+      "isAdmin": true,
+      "id": "0130"
+    },
+    {
+      "name": "omar",
+      "email": "omar@gmail.com",
+      "password": "aaaaaaa",
+      "phone": "01185746637",
+      "gender": "male",
+      "dateOfBirth": "2025-07-01",
+      "isVerified": "true",
+      "isAdmin": true,
+      "id": "759a"
     }
   ],
   "units": [
@@ -171,7 +193,7 @@
     },
     {
       "id": "2",
-      "userId": "0f1c",
+      "userId": null,
       "unitId": "ac79",
       "date": "2025-07-01",
       "status": "pending"

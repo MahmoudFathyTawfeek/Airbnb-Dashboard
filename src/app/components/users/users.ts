@@ -62,6 +62,7 @@ export class UsersComponent implements OnInit {
         this.users = this.users.filter(user => user.id !== id);
         this.filteredUsers = this.filteredUsers.filter(user => user.id !== id);
         alert('User deleted successfully');
+        this.cdr.detectChanges();
       }, error => {
         alert('Failed to delete user');
         console.error(error);
